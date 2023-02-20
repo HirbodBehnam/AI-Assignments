@@ -1,0 +1,47 @@
+\smalltitle{سوال 4}
+\link{https://arxiv.org/ftp/arxiv/papers/1308/1308.4675.pdf}{منبع}
+\begin{enumerate}
+    \item \begin{gather*}
+        a + 2b + 4c + 5d - 40
+    \end{gather*}
+    \item \begin{enumerate}
+        \item $|10 + 8 + 24 + 35 - 40| = 37$
+        \item $|15 + 40 + 4 + 0 - 40| = 19$
+        \item $|3 + 8 + 24 + 30 - 40| = 25$
+        \item $|6 + 2 + 8 + 25 - 40| = 1$
+        \item $|2 + 6 + 36 + 10 - 40| = 14$
+    \end{enumerate}
+    \item تابع \lr{Fitness}:
+    \begin{align*}
+        F_1 &= \frac{1}{1+37} \approx 0.026 \\
+        F_2 &= \frac{1}{1+19} \approx 0.05 \\
+        F_3 &= \frac{1}{1+25} \approx 0.038 \\
+        F_4 &= \frac{1}{1+1} \approx 0.5 \\
+        F_5 &= \frac{1}{1+14} \approx 0.067
+    \end{align*}
+    \begin{gather*}
+        Total = 0.026 + 0.05 + 0.038 + 0.5 + 0.067 = 0.681
+    \end{gather*}
+    احتمال انتخاب شدن هر کروموزوم:
+    \begin{align*}
+        P_1 &= 0.026 / 0.681 = 0.04 \\
+        P_2 &= 0.05 / 0.681 = 0.07 \\
+        P_3 &= 0.038 / 0.681 = 0.06 \\
+        P_4 &= 0.5 / 0.681 = 0.73 \\
+        P_5 &= 0.067 / 0.681 = 0.10
+    \end{align*}
+    \item \begin{align*}
+        C_1 &= 0.04 \\
+        C_2 &= 0.04 + 0.07 = 0.11 \\
+        C_3 &= 0.04 + 0.07 + 0.06 = 0.17 \\
+        C_4 &= 0.04 + 0.07 + 0.06 + 0.73 = 0.9 \\
+        C_5 &= 0.04 + 0.07 + 0.06 + 0.73 + 0.10 = 1
+    \end{align*}
+    \item \begin{align*}
+        Chromosome_1 &= [6, 1, 2, 5] \\
+        Chromosome_2 &= [6, 1, 2, 5] \\
+        Chromosome_3 &= [10, 4, 6, 7] \\
+        Chromosome_4 &= [2, 3, 9, 2] \\
+        Chromosome_5 &= [3, 4, 6, 6] \\
+    \end{align*}
+\end{enumerate}
