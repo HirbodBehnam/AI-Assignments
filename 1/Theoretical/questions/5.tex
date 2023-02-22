@@ -1,0 +1,96 @@
+\smalltitle{سوال 5}
+% https://machinelearningmastery.com/a-gentle-introduction-to-gradient-descent-procedure/
+% def p(x, y):
+%     return (x - 0.1 * (2 * x - 1), y - 0.1 * (4 * y - 1))
+\\\noindent
+در ابتدا برای این تابع داریم:
+\begin{gather*}
+    \frac{df}{dx} = 2x - 1\\
+    \frac{df}{dy} = 4y - 1\\
+    \nabla f = \begin{pmatrix}
+        2x - 1\\
+        4y - 1
+    \end{pmatrix} 
+\end{gather*}
+\begin{enumerate}
+    \item \begin{gather*}
+        P_0 = \begin{pmatrix}
+            1\\
+            3
+        \end{pmatrix}\\
+        P_1 = \begin{pmatrix}
+            1\\
+            3
+        \end{pmatrix} - 0.1 \begin{pmatrix}
+            2(1) - 1\\
+            4(3) - 1
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.9\\
+            1.9
+        \end{pmatrix}\\
+        P_2 = \begin{pmatrix}
+            0.9\\
+            1.9
+        \end{pmatrix} - 0.1 \begin{pmatrix}
+            2(0.9) - 1\\
+            4(1.9) - 1
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.82\\
+            1.24
+        \end{pmatrix}\\
+        P_3 = \begin{pmatrix}
+            0.82\\
+            1.24
+        \end{pmatrix} - 0.1 \begin{pmatrix}
+            2(0.82) - 1\\
+            4(1.24) - 1
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.756\\
+            0.844
+        \end{pmatrix}
+    \end{gather*}
+    \item \begin{gather*}
+        P_0 = \begin{pmatrix}
+            1\\
+            3
+        \end{pmatrix}\\
+        P_1 = \begin{pmatrix}
+            1\\
+            3
+        \end{pmatrix} - 0.7 \begin{pmatrix}
+            2(1) - 1\\
+            4(3) - 1
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.3\\
+            -4.7
+        \end{pmatrix}\\
+        P_2 = \begin{pmatrix}
+            0.3\\
+            -4.7
+        \end{pmatrix} - 0.7 \begin{pmatrix}
+            2(0.3) - 1\\
+            4(-4.7) - 1
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.58\\
+            9.16
+        \end{pmatrix}\\
+        P_3 = \begin{pmatrix}
+            0.58\\
+            9.16
+        \end{pmatrix} - 0.7 \begin{pmatrix}
+            2(0.58) - 1\\
+            4(9.16) - 1
+        \end{pmatrix}
+        = \begin{pmatrix}
+            0.468\\
+            -15.788
+        \end{pmatrix}
+    \end{gather*}
+    \item این اختلاف به دلیل این است که $\alpha$ را بیشتر کردیم. وقتی که $\alpha$ بیشتر می‌شود، سرعت تکان خوردن نقطه‌ی بعدی
+    نیز بیشتر می‌شود. ولی زیاد شدن سرعت ممکن است که باعث شود که دقت ما کم شود و گرادیان به عقب و جلو بپرد.
+\end{enumerate}
