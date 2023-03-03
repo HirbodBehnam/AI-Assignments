@@ -1,1 +1,176 @@
-\smalltitle{سوال 3}
+\smalltitle{سوال 3} \link{https://tex.stackexchange.com/a/174768/232396}{منبع لاتک}
+\begin{enumerate}
+    \item \phantom{kir} \begin{figure*}[h]
+        \centering
+        \begin{forest}
+        [5
+            [4
+                [4
+                    [4,
+                        [4]
+                        [9]
+                    ]
+                    [3,
+                        [3]
+                        [9]
+                        [8]
+                    ]
+                ]
+                [5
+                    [5
+                        [5]
+                    ]
+                ]
+            ]
+            [5
+                [7
+                    [7
+                        [7]
+                    ]
+                    [6
+                        [6]
+                        [9]
+                    ]
+                ]
+                [5
+                    [5
+                        [5]
+                    ]
+                ]
+            ]
+            [1
+                [1
+                    [1
+                        [1]
+                    ]
+                ]
+                [9
+                    [2
+                        [4]
+                        [2]
+                    ]
+                    [9
+                        [9]
+                    ]
+                ]
+            ]
+        ]
+        \end{forest}
+    \end{figure*}
+    \item هر زوج به ترتیب مقادیر $\alpha$ و $\beta$ از چپ به راست را نشان می‌دهد. \begin{figure*}[h]
+        \centering
+        \begin{forest}
+        [{$(5, \infty)$}
+            [{$(-\infty, 4)$}
+                [{$(4, \infty)$}
+                    [{$(-\infty, 4)$}
+                        [4]
+                        [9]
+                    ]
+                    [{$(4, 3)$}
+                        [3]
+                        [9,edge={crossedoutedge}]
+                        [8,edge={crossedoutedge}]
+                    ]
+                ]
+                [{$(-\infty, 4)$}
+                    [{$(-\infty, 4)$}
+                        [5]
+                    ]
+                ]
+            ]
+            [{$(4, 5)$}
+                [{$(4, 7)$}
+                    [{$(4, 7)$}
+                        [7]
+                    ]
+                    [{$(4, 6)$}
+                        [6]
+                        [9]
+                    ]
+                ]
+                [{$(5, 7)$}
+                    [{$(4, 5)$}
+                        [5]
+                    ]
+                ]
+            ]
+            [{$(5, \infty)$}
+                [{$(5, \infty)$}
+                    [{$(5, 1)$}
+                        [1]
+                    ]
+                ]
+                [$\Delta$,edge={crossedoutedge}
+                    [$\nabla$
+                        [4]
+                        [2]
+                    ]
+                    [$\nabla$
+                        [9]
+                    ]
+                ]
+            ]
+        ]
+        \end{forest}
+    \end{figure*}
+    \item \phantom{kir} \begin{figure*}[h]
+        \centering
+        \begin{forest}
+            [{$(5, \infty)$}
+                [{$(5, 5)$}
+                    [$\Delta$,edge={crossedoutedge}
+                        [$\nabla$,
+                            [4]
+                            [9]
+                        ]
+                        [$\nabla$,
+                            [3]
+                            [9]
+                            [8]
+                        ]
+                    ]
+                    [{$(5, \infty)$}
+                        [{$(5, 5)$}
+                            [5]
+                        ]
+                    ]
+                ]
+                [{$(1, 5)$}
+                    [{$(6, 5)$}
+                        [$\nabla$,edge={crossedoutedge}
+                            [7]
+                        ]
+                        [{$(1, 5)$}
+                            [6]
+                            [9]
+                        ]
+                    ]
+                    [{$(5, \infty)$}
+                        [{$(1, 5)$}
+                            [5]
+                        ]
+                    ]
+                ]
+                [{$(-\infty, 1)$}
+                    [{$(1, 9)$}
+                        [{$(-\infty, 1)$}
+                            [1]
+                        ]
+                    ]
+                    [{$(9, \infty)$}
+                        [{$(9, 4)$}
+                            [4]
+                            [2,edge={crossedoutedge}]
+                        ]
+                        [{$(-\infty, 9)$}
+                            [9]
+                        ]
+                    ]
+                ]
+            ]
+        \end{forest}
+    \end{figure*}
+    \item زمانی بهتر است که بهترین حرکت‌ها در سمتی باشد که شروع به بررسی می‌کنیم. در این حالت شاخه‌های دیگر
+    به سرعت \lr{prune} می‌شوند.
+\end{enumerate}
