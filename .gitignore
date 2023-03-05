@@ -9,3 +9,4 @@ HW.synctex.gz
 .idea
 cmake-build-debug
 .ipynb_checkpoints
+__pycache__
