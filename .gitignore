@@ -1,5 +1,6 @@
 **/*.docx
 **/*.pdf
+**/*.zip
 HW.aux
 HW.log
 HW.out

@@ -1,0 +1,121 @@
+% !TEX program = xelatex
+\documentclass[]{article}
+\usepackage{commons/course}
+
+\begin{document}
+\printheader
+
+\smalltitle{سوال 1}
+\\\noindent
+در ابتدا تمام دامنه متغیر‌ها را می‌نویسیم:
+\begin{gather*}
+    A = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\\
+    B = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\\
+    C = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}
+\end{gather*}
+سپس یال
+$A \rightleftharpoons B$
+را بررسی می‌کنیم. در این یال مشخص است که
+$B$
+نمی‌تواند صفر باشد یا
+$A$
+برابر 9 باشد چرا که دامنه‌ی آن یکی متغیر به مشکل می‌خورد. پس داریم:
+\begin{gather*}
+    A = \{0, 1, 2, 3, 4, 5, 6, 7, 8, \cancel{9}\}\\
+    B = \{\cancel{0}, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\\
+    C = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}
+\end{gather*}
+حال یال
+$B \rightleftharpoons C$
+را بررسی می‌کنیم.
+از طرفی به خاطر دامنه‌ی
+$C$
+مقادیر
+$B$
+باید حتما کوچکتر مساوی 3 باشد. همچنین از سمت دیگر مقادیر
+$C$
+باید مربع کامل باشند. همچنین دقت کنید که قبلا 0 را از دامنه‌ی $B$ خط زده بودیم. پس در نهایت داریم:
+\begin{gather*}
+    A = \{0, 1, 2, 3, 4, 5, 6, 7, 8, \cancel{9}\}\\
+    B = \{\cancel{0}, 1, 2, 3, \cancel{4, 5, 6, 7, 8, 9}\}\\
+    C = \{\cancel{0}, 1, \cancel{2, 3}, 4, \cancel{5, 6, 7, 8}, 9\}
+\end{gather*}
+در نهایت چون به دامنه‌ی
+$B$
+دست زدیم، دوباره دامنه‌ی
+$A$
+را نیز بررسی می‌کنیم.
+\begin{gather*}
+    A = \{0, 1, 2, \cancel{3, 4, 5, 6, 7, 8}, \cancel{9}\}\\
+    B = \{\cancel{0}, 1, 2, 3, \cancel{4, 5, 6, 7, 8, 9}\}\\
+    C = \{\cancel{0}, 1, \cancel{2, 3}, 4, \cancel{5, 6, 7, 8}, 9\}
+\end{gather*}
+
+\smalltitle{سوال 2}
+\begin{enumerate}
+    \item \phantom{kir} \begin{figure*}[h]
+        \centering
+        \begin{forest}
+        [3
+            [2
+                [6]
+                [2]
+            ]
+            [0
+                [0]
+                [10]
+            ]
+            [3
+                [3]
+                [5]
+                [12]
+            ]
+        ]
+        \end{forest}
+    \end{figure*}
+    \item مقادیر $\alpha$ و $\beta$ از چپ به راست در هر راس نوشته شده است.
+    \begin{figure*}[h]
+        \centering
+        \begin{forest}
+        [{$2, \infty$}
+            [{$-\infty, 2$}
+                [6]
+                [2]
+            ]
+            [{$2, 0$}
+                [0]
+                [10,edge={crossedoutedge}]
+            ]
+            [{$2, 3$}
+                [3]
+                [5]
+                [12]
+            ]
+        ]
+        \end{forest}
+    \end{figure*}
+    پس بله هرس رخ می‌دهد.
+    \item برای هر حالت min امیدریاضی را حساب می‌کنیم:
+    \begin{center}
+    \begin{forest}
+        [{$4.83$}
+            [{$0.5 \times 2 + 0.5 (\frac{6 + 2}{2}) = 3$}
+                [6]
+                [2]
+            ]
+            [{$0.5 \times 0 + 0.5 (\frac{0 + 10}{2}) = 2.5$}
+                [0]
+                [10]
+            ]
+            [{$0.5 \times 3 + 0.5 (\frac{3 + 5 + 12}{3}) = 4.83$}
+                [3]
+                [5]
+                [12]
+            ]
+        ]
+    \end{forest}
+    \end{center}
+    از هم بهتر است که یال سوم را انتخاب بکنیم.
+\end{enumerate}
+
+\end{document}
