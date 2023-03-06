@@ -38,13 +38,10 @@ def minimax(board: npt.NDArray[np.int8], starting_player: int, player_piece: int
         for allowed_move in allowed_moves:
             copied_board = np.copy(board)
             copied_board[allowed_move[0], allowed_move[1]] = player_piece
-            best_value, best_move = minimax(copied_board, starting_player, other_player_piece(player_piece), depth - 1, not is_maximizing_player, alpha, beta)
+            best_value, _ = minimax(copied_board, starting_player, other_player_piece(player_piece), depth - 1, not is_maximizing_player, alpha, beta)
             if v < best_value:
                 v = best_value
-                if best_move == None: # Thermal state
-                    total_best_move = allowed_move
-                else:
-                    total_best_move = best_move
+                total_best_move = allowed_move
             if v >= beta:
                 break
             alpha = max(alpha, v)
@@ -53,25 +50,22 @@ def minimax(board: npt.NDArray[np.int8], starting_player: int, player_piece: int
         for allowed_move in allowed_moves:
             copied_board = np.copy(board)
             copied_board[allowed_move[0], allowed_move[1]] = player_piece
-            best_value, best_move = minimax(copied_board, starting_player, other_player_piece(player_piece), depth - 1, not is_maximizing_player, alpha, beta)
-            if v > best_value:
+            best_value, _ = minimax(copied_board, starting_player, other_player_piece(player_piece), depth - 1, not is_maximizing_player, alpha, beta)
+            if v >= best_value:
                 v = best_value
-                if best_move == None: # Thermal state
-                    total_best_move = allowed_move
-                else:
-                    total_best_move = best_move
+                total_best_move = allowed_move
             if v <= alpha:
                 break
             beta = min(beta, v)
     # If we have not found anything, return a random place
     if total_best_move == None:
-        return (v, random.choice(BoardUtility.get_valid_locations(board)))
+        return (BoardUtility.score_position(board, starting_player), random.choice(BoardUtility.get_valid_locations(board)))
     else: # otherwise we are good
         return (v, total_best_move)
 
 
 
-def minimax_prob(board, our_piece, enemy_piece, depth, is_maximizing_player, alpha, beta, prob):
+def minimax_prob(board: npt.NDArray[np.int8], starting_player: int, player_piece: int, depth: int, is_maximizing_player: bool, alpha: int, beta: int, prob: float) -> tuple[int, Optional[tuple[int, int]]]:
     """
     This function run alpha beta puring algorithm and return best next move
     :param board: game board
@@ -83,5 +77,42 @@ def minimax_prob(board, our_piece, enemy_piece, depth, is_maximizing_player, alp
     :param prob: probability of choosing a random action in each max node
     :return best_value, best_move: You have to return best next move and its value
     """
-    # TODO fill me
-    pass
+    # Check terminal state
+    if BoardUtility.is_terminal_state(board) or depth == 0:
+        return (BoardUtility.score_position(board, starting_player), None)
+    # Normal stuff just like slides
+    allowed_moves = BoardUtility.get_valid_locations(board)
+    total_best_move = None
+    v = 0
+    if is_maximizing_player:
+        # Check random move
+        if random.uniform(0, 1) < prob:
+            return (BoardUtility.score_position(board, starting_player), random.choice(BoardUtility.get_valid_locations(board)))
+        v = -INT_INF
+        for allowed_move in allowed_moves:
+            copied_board = np.copy(board)
+            copied_board[allowed_move[0], allowed_move[1]] = player_piece
+            best_value, _ = minimax(copied_board, starting_player, other_player_piece(player_piece), depth - 1, not is_maximizing_player, alpha, beta)
+            if v < best_value:
+                v = best_value
+                total_best_move = allowed_move
+            if v >= beta:
+                break
+            alpha = max(alpha, v)
+    else:
+        v = INT_INF
+        for allowed_move in allowed_moves:
+            copied_board = np.copy(board)
+            copied_board[allowed_move[0], allowed_move[1]] = player_piece
+            best_value, _ = minimax(copied_board, starting_player, other_player_piece(player_piece), depth - 1, not is_maximizing_player, alpha, beta)
+            if v >= best_value:
+                v = best_value
+                total_best_move = allowed_move
+            if v <= alpha:
+                break
+            beta = min(beta, v)
+    # If we have not found anything, return a random place
+    if total_best_move == None:
+        return (BoardUtility.score_position(board, starting_player), random.choice(BoardUtility.get_valid_locations(board)))
+    else: # otherwise we are good
+        return (v, total_best_move)

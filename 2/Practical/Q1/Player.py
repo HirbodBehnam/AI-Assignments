@@ -38,6 +38,7 @@ class MiniMaxPlayer(Player):
         """
         betterBoard = board.astype(np.int8) # fuck floating point numbers
         _, move = minimax(betterBoard, self.piece, self.piece, self.depth, True, -INT_INF, INT_INF)
+        print("For", betterBoard, "choose", move)
         return move
 
 
@@ -54,5 +55,7 @@ class MiniMaxProbPlayer(Player):
         same as above but each time you are playing as max choose a random move instead of the best move
         with probability self.prob_stochastic.
         """
-        # Todo: implement minimax algorithm with alpha beta pruning
-        return random.choice(BoardUtility.get_valid_locations(board))
+        betterBoard = board.astype(np.int8) # fuck floating point numbers
+        _, move = minimax_prob(betterBoard, self.piece, self.piece, self.depth, True, -INT_INF, INT_INF, self.prob_stochastic)
+        print("For", betterBoard, "choose (rand)", move)
+        return move

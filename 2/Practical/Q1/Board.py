@@ -38,18 +38,44 @@ class BoardUtility:
         return not np.any(game_board == 0)
 
     @staticmethod
+    def heuristic(line: list[int], player: int) -> int:
+        # Kinda from https://www3.ntu.edu.sg/home/ehchua/programming/java/javagame_tictactoe_ai.html
+        opponent = 1 if player == 2 else 2
+        if line.count(player) == 2 and line.count(opponent) == 0: # one step from winning
+            return 100
+        if line.count(opponent) == 2 and line.count(player) == 0: # one step from loosing
+            return -100
+        if line.count(opponent) == 1 and line.count(player) == 1: # not possible to win
+            return 0
+        if line.count(opponent) == 1: # only one tile
+            return -10
+        if line.count(player) == 1: # only one tile
+            return 10
+        return 0
+
+
+    @staticmethod
     def score_position(game_board, piece):
         """
         compute the game board score for a given piece.
         you can change this function to use a better heuristic for improvement.
         """
-        score = 0
         if BoardUtility.has_player_won(game_board, piece):
             return 100_000_000_000  # player has won the game give very large score
         if BoardUtility.has_player_won(game_board, 1 if piece == 2 else 2):
             return -100_000_000_000  # player has lost the game give very large negative score
-        # todo score the game board based on a heuristic.
+        if BoardUtility.is_draw(game_board):
+            return 0
+        
+        #
+        score = 0
+        for i in range(3):
+            score += BoardUtility.heuristic([game_board[i, 0], game_board[i, 1], game_board[i, 2]], piece)
+            score += BoardUtility.heuristic([game_board[0, i], game_board[1, i], game_board[2, i]], piece)
 
+        score += BoardUtility.heuristic([game_board[0, 0], game_board[1, 1], game_board[2, 2]], piece)
+        score += BoardUtility.heuristic([game_board[2, 0], game_board[1, 1], game_board[0, 2]], piece)
+        
         return score
 
     @staticmethod
