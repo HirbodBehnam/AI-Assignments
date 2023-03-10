@@ -107,7 +107,7 @@ class CSP:
             self.number_of_iteration += 1
             if next_tile == self.n: # we have checked everything
                 return True
-            if self._solve_problem_with_backtrack(i+1): # Move to next queen
+            if self._solve_problem_with_forward_check(i+1): # Move to next queen
                 return True
             self.grid[i, candidate] = 0
             self.forward_check(i, candidate, True) # Restore domains
