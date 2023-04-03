@@ -6,58 +6,58 @@
     \end{gather*}
     حال برای بار اول داریم:
     \begin{align*}
-        V_1(s_1) = \operatorname{max}(
+        V_1(s_1) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_2) = \operatorname{max}(
+        V_1(s_2) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_3) = \operatorname{max}(
+        V_1(s_3) = \max(
             &0.9 \times 2 + 0.1 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = 0.8\\
-        V_1(s_4) = \operatorname{max}(
+        V_1(s_4) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_5) = \operatorname{max}(
+        V_1(s_5) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_6) = \operatorname{max}(
+        V_1(s_6) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_7) = \operatorname{max}(
+        V_1(s_7) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_8) = \operatorname{max}(
+        V_1(s_8) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_9) = \operatorname{max}(
+        V_1(s_9) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1),\\
             &1 \times (-1)
         ) = -1\\
-        V_1(s_{10}) = \operatorname{max}(
+        V_1(s_{10}) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1),\\
             &1 \times (-1)
@@ -65,64 +65,102 @@
     \end{align*}
     برای بار دوم نیز به توجه به حالت اول داریم:
     \begin{align*}
-        V_2(s_1) = \operatorname{max}(
+        V_2(s_1) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1)
         ) = -2\\
-        V_2(s_2) = \operatorname{max}(
+        V_2(s_2) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 + 0.8),\\
             &1 \times (-1 - 1)
         ) = -0.2\\
-        V_2(s_3) = \operatorname{max}(
+        V_2(s_3) = \max(
             &0.9 \times 2 + 0.1 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1)
         ) = 0.8\\
-        V_2(s_4) = \operatorname{max}(
+        V_2(s_4) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 + 0.8),\\
             &1 \times (-1 - 1)
         ) = -0.2\\
-        V_2(s_5) = \operatorname{max}(
+        V_2(s_5) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1)
         ) = -2\\
-        V_2(s_6) = \operatorname{max}(
+        V_2(s_6) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1)
         ) = -2\\
-        V_2(s_7) = \operatorname{max}(
+        V_2(s_7) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1)
         ) = -1\\
-        V_2(s_8) = \operatorname{max}(
+        V_2(s_8) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 + 0.8),\\
             &1 \times (-1 - 1)
         ) = 0.2\\
-        V_2(s_9) = \operatorname{max}(
+        V_2(s_9) = \max(
             &0.75 \times 2 + 0.25 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1)
         ) = -1\\
-        V_2(s_{10}) = \operatorname{max}(
+        V_2(s_{10}) = \max(
             &0.6 \times 3 + 0.4 \times (-10),\\
             &1 \times (-1 - 1),\\
             &1 \times (-1 - 1)
         ) = -2
     \end{align*}
-    \item 
+    \item همان طور که گفته شد تمامی $Q(s, a)$ها را صفر می کنیم در ابتدا.
+    سپس تمامی \lr{episode}ها
+    را تک به تک بررسی می‌کنیم.
+    فرمول برای حساب کردن
+    $Q(s, a)$های
+    جدید برابر است با
+    \begin{gather*}
+        Q(s, a) = (1 - \alpha) Q(s, a) + \alpha (R(s, a, s') + \gamma \max_{a'} Q(s', a'))
+    \end{gather*}
+    پس برای
+    \lr{episode}های
+    مختلف داریم:
+    \begin{enumerate}
+        \item \begin{align*}
+            Q(s_8, R) &= 0.5 \times 0 + 0.5 (-1 + \max_{a'} Q(s_9, a')) = -0.5\\
+            Q(s_9, U) &= 0.5 \times 0 + 0.5 (-1 + \max_{a'} Q(s_4, a')) = -0.5\\
+            Q(s_4, shoot) &= 0.5 \times 0 + 0.5 (1 + \max_{a'} Q(goal, a')) = 0.5
+        \end{align*}
+        \item \begin{align*}
+            Q(s_8, R) &= 0.5 \times (-0.5) + 0.5 (-1 + \max_{a'} Q(s_7, a')) = -0.75\\
+            Q(s_7, R) &= 0.5 \times 0 + 0.5 (-1 + \max_{a'} Q(s_8, a')) = -0.5\\
+            Q(s_8, shoot) &= 0.5 \times 0 + 0.5 (1 + \max_{a'} Q(goal, a')) = 0.5
+        \end{align*}
+        \item \begin{align*}
+            Q(s_8, R) &= 0.5 \times (-0.75) + 0.5 (-1 + \max_{a'} Q(s_9, a')) = −0.875\\
+            Q(s_9, R) &= 0.5 \times 0 + 0.5 (-1 + \max_{a'} Q(s_{10}, a')) = -0.5\\
+            Q(s_{10}, shoot) &= 0.5 \times 0 + 0.5 (2 + \max_{a'} Q(goal, a')) = 1
+        \end{align*}
+        \item \begin{align*}
+            Q(s_8, R) &= 0.5 \times (−0.875) + 0.5 (-1 + \max_{a'} Q(s_7, a')) = −0.9375\\
+            Q(s_7, L) &= 0.5 \times 0 + 0.5 (-1 + \max_{a'} Q(s_8, a')) = -0.5\\
+            Q(s_8, shoot) &= 0.5 \times 0.5 + 0.5 (-5 + \max_{a'} Q(fail, a')) = -2.25
+        \end{align*}
+        \item \begin{align*}
+            Q(s_8, R) &= 0.5 \times (−0.9375) + 0.5 (-1 + \max_{a'} Q(s_7, a')) = −0.96875\\
+            Q(s_9, U) &= 0.5 \times (-0.5) + 0.5 (-1 + \max_{a'} Q(s_{10}, a')) = −0.75\\
+            Q(s_{10}, shoot) &= 0.5 \times 1 + 0.5 (-5 + \max_{a'} Q(fail, a')) = -2
+        \end{align*}
+    \end{enumerate}
 \end{enumerate}
 
 
