@@ -2,9 +2,50 @@
 \begin{enumerate}
     \item از شرقی ترین خانه شروع می کنیم:
     \begin{enumerate}
-        \item $10 \times p + 0 \times (1 - p) = 10p$
-        \item 
+        \item $p (10 + \gamma \times 0) + (1 - p) (0 + \gamma \times 0) = 10p$
+        \item $p (0 + \gamma \times 10p) + (1 - p) (0 + \gamma \times 0) = 10p^2 \gamma$
+        \item $1 (0 + \gamma \times 10p^2 \gamma) = 10p^2 \gamma^2$
+        \item $1 (0 + \gamma \times 10p^2 \gamma^2) = 10p^2 \gamma^3$
     \end{enumerate}
+    \item از غربی ترین خانه شروع می‌کنیم.
+    \begin{enumerate}
+        \item $1 (5 + \gamma \times 0) = 5$
+        \item $1 (0 + \gamma \times 5) = 5\gamma$
+        \item $p (0 + \gamma \times 5\gamma) + (1 - p) (0 + \gamma \times 0) = 5 p \gamma^2$
+        \item $p (0 + \gamma \times 5p\gamma^2) + (1 - p) (0 + \gamma \times 0) = 5 p^2 \gamma^3$
+    \end{enumerate}
+    \item عملا باید معادله‌ی زیر را حل کنیم. به صورت کلی نیز می‌دانیم که
+    $0 < p, \gamma < 1$
+    است.
+    \begin{gather*}
+        10p^2 \gamma^2 > 5\gamma \implies 2p^2 \gamma > 1 \implies p^2 > \frac{1}{2\gamma} \implies\\
+        p > \frac{1}{\sqrt{2\gamma}}
+    \end{gather*}
+    \item در \lr{value iteration}
+    ما به هر
+    \lr{state}
+    یک عدد به اسم
+    \lr{value}
+    نسبت می‌دهیم که به صورت کلی نشان می‌دهد می‌دهد که چه قدر آن
+    \lr{state}
+    برایمان خوب است. در ابتدا به مقداری مانند صفر برای هر حالت شروع می‌کنیم و در هر دور مقدار
+    \lr{value}
+    را نزدیک‌تر به مقدار واقعی هر حالت نزدیک‌تر می‌شود.
+
+    در
+    \lr{policy iteration}
+    ما یک
+    \lr{action}
+    رندوم را برای کار‌هاییمان در ابتدا انتخاب می‌کنیم و با روشی مثل
+    \lr{value iteration}
+    در هر گام آنرا بهبود می‌دهیم.
+    
+    به صورت کلی الگوریتم‌ها جفتشان بهترین
+    \lr{policy}
+    را برای ما به صورت گارانتی شده پیدا می‌کنند. به صورت کلی الگوریتم
+    \lr{policy iteration}
+    سریع‌تر ولی پیچیده‌تر است.
+    (\link{https://www.baeldung.com/cs/ml-value-iteration-vs-policy-iteration}{منبع})
 \end{enumerate}
 
 
