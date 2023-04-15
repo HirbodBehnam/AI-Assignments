@@ -1,0 +1,54 @@
+\smalltitle{سوال 1}
+\begin{enumerate}
+    % https://www.statlect.com/fundamentals-of-probability/sums-of-independent-random-variables
+    % https://math.stackexchange.com/q/222470
+    % https://math.stackexchange.com/a/357842/424863
+    \item فرض کنید که \lr{CDF} متغیر تصادفی $S$ برابر $F_S(s)$ است.
+    پس داریم:
+    \begin{align*}
+        F_S(s) &= P(S < s)\\
+        &= P(X + Y < s)\\
+        &= P(X < s - Y)\\
+        &= \mathbb{E}(P(X < s - Y | Y = y)) \quad \mathbb{E} (X) = \mathbb{E} ( \mathbb{E} ( X \mid Y))\\
+        &= \mathbb{E}(F_X(s - y)) 
+    \end{align*}
+    حال دقت کنید که در این سوال
+    $0 \le s \le 2$
+    است.
+    پس داریم برای این سوال:
+    \begin{align*}
+        f_S(s) & = \int_{-\infty}^\infty f_X(s-y)f_Y(y) dy
+    \end{align*}
+    حال به دو حالت مسئله را نقسیم می‌کنیم. حالتی که
+    $0 \le s \le 1$
+    و حالتی که 
+    $1 \le s \le 2$.
+    حال دقت کنید که انتگرال تنها دو حالت دارد؛ در برخی جا‌ها برابر 0 است و در برخی برابر 1.
+    به صورت دقیق‌تر در جفت حالت در صورتی ضرب دو PDF برابر یک است که
+    $0 \le y \le 1$
+    و
+    $0 \le s - y \le 1$
+    باشد. پس در نهایت در حالتی 1 است که
+    $s \ge y$
+    باشد. پس در حالت اول داریم:
+    \begin{gather*}
+        f_S(s) = \int_{-\infty}^\infty f_X(s-y)f_Y(y) dy = \int_0^s 1 dy = s
+    \end{gather*}
+    برای حالت دوم نیز داریم:
+    \begin{gather*}
+        f_S(s) = \int_{-\infty}^\infty f_X(s-y)f_Y(y) dy = \int_{s - 1}^1 1 dy = 2 - s
+    \end{gather*}
+    پس داریم:
+    \begin{gather*}
+        F_S(s) =
+            \begin{cases}
+              s & 0 \le s < 1\\
+              2 - s & 2 \le s \le 2\\
+              0 & \text{otherwise}\\
+            \end{cases}
+    \end{gather*}
+    \item مانند قسمت قبل عمل می‌کنیم:
+    \begin{gather*}
+        f_{X|S}(x | s) = \frac{f_{X,S}(x, s)}{f_S(s)}
+    \end{gather*}
+\end{enumerate}
