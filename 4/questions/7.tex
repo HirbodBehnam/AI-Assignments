@@ -1,1 +1,31 @@
 \smalltitle{سوال 7}
+در ابتدا دقت کنید که با یک جا به جایی به
+$y_i - ax_i - b = \alpha_i \sim Normal(0, \sigma)$
+می‌رسیم. پس عملا از آنجا که نقاط مستقل هستند به دنبال
+$P(X = y_i - ax_i - b)$
+هستیم که در آن
+$X \sim Normal(0, \sigma)$
+است.
+\begin{gather*}
+    \mathcal{L}((x_1,y_1), (x_2,y_2), \cdots, (x_n,y_n); a, b) = \mathcal{L}(y_1 - ax_1 - b, \cdots, y_n - ax_n - b; a, b)\\
+    = \prod_{i=1}^n P(X = y_i - ax_i - b) = \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma}} e^{-\frac{(y_i - ax_i - b)^2}{2\sigma}} =
+    (\frac{1}{\sqrt{2 \pi \sigma}})^n e^{\frac{-1}{2\sigma} \sum_{i=1}^n (y_i - ax_i - b)^2}\\
+    \stackrel{\ln}{\implies} \frac{-n}{2}\ln(2 \pi \sigma) + \frac{-1}{2\sigma} \sum_{i=1}^n (y_i - ax_i - b)^2\\
+    \stackrel{\frac{d}{d a}}{\implies} \frac{1}{2\sigma} \sum_{i=1}^n 2x_i (y_i - ax_i - b) = 0\\
+    \stackrel{\frac{d}{d b}}{\implies} \frac{1}{2\sigma} \sum_{i=1}^n 2 (y_i - ax_i - b) = 0
+\end{gather*}
+این بدین معنی است که باید
+$\sum_{i=1}^n x_i (y_i - ax_i - b) = 0$
+و
+$\sum_{i=1}^n (y_i - ax_i - b) = 0$
+باشد. از معادله دوم داریم:
+\begin{gather*}
+    \sum_{i=1}^n (y_i - ax_i - b) = \sum_{i=1}^n y_i - \sum_{i=1}^n ax_i - nb = 0\\
+    \implies \frac{\sum_{i=1}^n y_i}{n} - \frac{\sum_{i=1}^n ax_i}{n} = \bar{y} - a\bar{x} = b
+\end{gather*}
+حال با جایگذاری در عبارت اول داریم:
+\begin{gather*}
+    \sum_{i=1}^n x_i (y_i - ax_i - \bar{y} + a\bar{x}) = \sum_{i=1}^n x_i y_i - ax_i^2 - x_i\bar{y} + ax_i\bar{x}
+    = \sum_{i=1}^n (x_i y_i - x_i\bar{y}) - \sum_{i=1}^n (ax_i^2 - ax_i\bar{x}) = 0\\
+    \implies a = \frac{\sum_{i=1}^{n} (x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n (x_i-\bar{x})^2}
+\end{gather*}

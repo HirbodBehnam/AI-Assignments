@@ -1,1 +1,31 @@
 \smalltitle{سوال 6}
+از
+\lr{Weltch's t-test}
+استفاده می‌کنیم.
+\begin{gather*}
+    t = \frac{\bar{X_1} - \bar{X_2}}{\sqrt{\frac{\sigma^2_1}{N_1}+\frac{\sigma^2_2}{N_2}}}\\
+    X_1 = \frac{60 + 42 + 41 + 39 + 38}{5} = 44 \quad X_2 = \frac{69 + 68 + 64 + 62 + 56 + 42 + 38}{7} = 57\\
+    \sigma_1^2 = 82.5 \quad \sigma_2^2 = 154.3\\
+    t = \frac{57 - 44}{\sqrt{\frac{82.5}{5} +\frac{154.3}{7}}} = 2.094\\
+    df = 7 + 5 - 2 = 10
+\end{gather*}
+حال
+\lr{p value}
+را حساب می‌کنیم. این کار را به کمک زبان
+\lr{R}
+و
+\lr{package p-test}
+انجام می‌دهیم.
+\begin{latin}
+    \[ %https://stats.stackexchange.com/a/45156/359756
+        p-value = \texttt{2*pt(2.094, df = 10, lower=FALSE)} = 0.064
+    \]
+\end{latin}
+اگر
+$\alpha = 0.05$
+باشد، از آنجا که
+$0.064 > 0.05$
+است پس می‌توان نتیجه گرفت که موثر است.
+
+
+
