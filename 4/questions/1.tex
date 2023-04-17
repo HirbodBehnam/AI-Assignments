@@ -43,12 +43,42 @@
         F_S(s) =
             \begin{cases}
               s & 0 \le s < 1\\
-              2 - s & 2 \le s \le 2\\
+              2 - s & 1 \le s \le 2\\
               0 & \text{otherwise}\\
             \end{cases}
     \end{gather*}
     \item مانند قسمت قبل عمل می‌کنیم:
     \begin{gather*}
-        f_{X|S}(x | s) = \frac{f_{X,S}(x, s)}{f_S(s)}
+        f_{X|S}(x | s) = \frac{f_{X,S}(x, s)}{f_S(s)} = \frac{f_{X,Y}(x, s - x)}{f_S(s)}
+    \end{gather*}
+    با توجه به بازه بندی قسمت قبل این عبارت را به صورت زیر بازه بندی می‌کنیم.
+    \begin{gather*}
+        f_{X|S}(x | s) =
+            \begin{cases}
+                \frac{f_{X,Y}(x, s - x)}{s} = \frac{s - x}{s} & 0 \le x \le s < 1\\
+                \frac{f_{X,Y}(x, s - x)}{2 - s} = 1 & 0 \le x \le 1 \le s < 2, s - x < 1\\
+                \frac{f_{X,Y}(x, s - x)}{2 - s} = 0 & 0 \le x \le 1 \le s < 2, s - x > 1\\
+            \end{cases}
+    \end{gather*}
+    در باقی مواقع نیز تابع چگالی برابر 0 می‌شود.
+    \item طبق قسمت قبل مشخص است که باید از حالت
+    $\frac{s - x}{s}$
+    استفاده کنیم چرا که
+    $s = 0.5$
+    است و مشخصا
+    $0 < x < 0.5$
+    است. پس:
+    \begin{gather*}
+        \mathbb{E}(X | S = 0.5) = \int_{0}^{0.5} x \frac{0.5 - x}{0.5} dx \approx 0.04166
+    \end{gather*}
+    \item کافی است که به کمک فرمول انتگرالی امیدریاضی بر روی تمامی حالاتی که در بخش 2 بدست آوردیم
+    آنرا حساب کنیم.
+    \begin{gather*}
+        \mathbb{E}(M) =
+            \begin{cases}
+                \int_{0}^{s} \frac{s - x}{s} dx & 0 \le x \le s < 1\\
+                \int_{0}^{s} 1 dx = s & 0 \le x \le 1 \le s < 2, s - x < 1\\
+                0 & \text{otherwise}\\
+            \end{cases}
     \end{gather*}
 \end{enumerate}
