@@ -1,0 +1,129 @@
+% !TEX program = xelatex
+\documentclass[]{article}
+\usepackage{commons/course}
+
+\begin{document}
+\printheader
+
+\smalltitle{سوال 1}
+\\\noindent
+\begin{latin}
+    \centering
+    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+    \tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=1]
+    \node[state] (M)  {$M$};
+    \node[state] (H)[below right of=M] {$H$};
+    \node[state] (S)[above right of=H] {$S$};
+    \path
+    (M) edge[below] node{} (H)
+    (S) edge[below] node{} (H)
+    ;
+    \end{tikzpicture}
+\end{latin}
+\vspace{1cm}
+\begin{latin}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        M & P(M)\\
+        \hline
+        +m & 0.1\\
+        \hline
+        -m & 0.9\\
+        \hline
+    \end{tabular}
+    \quad
+    \begin{tabular}{|c|c|}
+        \hline
+        S & P(S)\\
+        \hline
+        +s & 0.2\\
+        \hline
+        -s & 0.8\\
+        \hline
+    \end{tabular}
+    \quad
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        M & S & H & P(H | M, S)\\
+        \hline
+        +m & +s & +h & 0.9\\
+        \hline
+        +m & +s & -h & 0.1\\
+        \hline
+        +m & -s & +h & 0.5\\
+        \hline
+        +m & -s & -h & 0.5\\
+        \hline
+        -m & +s & +h & 0.6\\
+        \hline
+        -m & +s & -h & 0.4\\
+        \hline
+        -m & -s & +h & 0.1\\
+        \hline
+        -m & -s & -h & 0.9\\
+        \hline
+    \end{tabular}
+\end{latin}
+\smalltitle{سوال 2}
+\\\noindent
+در این قسمت باید حساب کنیم که
+$P(S, M | H) = P(S | H) \times P(M | H)$
+هست یا خیر. بدین منظور با توجه به باز شده‌ی فرمول‌های فوق قسمت چپ و راست را حساب می‌کنیم:
+\begin{gather*}
+    P(S, M | H) = \frac{P(S, M, H)}{P(H)} = \frac{P(S) \times P(M | S) \times P(H | S, M)}{0.9 \times 0.1 \times 0.2 + 0.5 \times 0.1 \times 0.8 + 0.6 \times 0.9 \times 0.2 + 0.1 \times 0.9 \times 0.8}\\
+    = \frac{0.2 \times 0.1 \times 0.9}{0.238} = \frac{0.018}{0.238} \approx 0.076
+\end{gather*}
+از طرفی دیگر برای قسمت دوم تساوی داریم:
+\begin{gather*}
+    P(S | H) = \frac{P(S, H)}{P(H)} = \frac{P(S) \times P(H | S)}{P(H)} = \frac{0.2 \times (0.9 \times 0.1 + 0.6 \times 0.9)}{0.238} \approx 0.53\\
+    P(M | H) = \frac{P(M, H)}{P(H)} = \frac{P(M) \times P(H | M)}{P(H)} = \frac{0.1 \times (0.9 \times 0.2 + 0.5 \times 0.8)}{0.238} \approx 0.24\\
+    P(S | H) \times P(M | H) = 0.1272
+\end{gather*}
+پس این دو عدد برابر نیستند و مستقل نیستند.
+
+
+\smalltitle{سوال 3}
+\\\noindent
+\begin{latin}
+    \centering
+    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=3cm]
+    \tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=1]
+    \node[state] (H) {$H$};
+    \node[state] (M)[right of=H] {$M$};
+    \node[state] (S)[right of=M] {$S$};
+    \path
+    (H) edge[below] node{} (M)
+    (M) edge[below] node{} (S)
+    ;
+    \end{tikzpicture}
+\end{latin}
+برای رسم
+\lr{CPT}ها
+از جدول قسمت اول استفاده می‌کنیم. به عنوان مثال برای بدست آوردن جدول
+\lr{H}ها
+از جمع احتمال‌ها بر روی
+\lr{H+}ها
+استفاده می‌کنیم ضرب در احتمال آمدن هر کدام از افراد.
+\begin{gather*}
+    H^+ = 0.9 \times 0.1 \times 0.2 + 0.5 \times 0.1 \times 0.8 + 0.6 \times 0.9 \times 0.2 + 0.1 \times 0.9 \times 0.8 = 0.238\\
+    H^- = 0.1 \times 0.1 \times 0.2 + 0.5 \times 0.1 \times 0.8 + 0.4 \times 0.9 \times 0.2 + 0.9 \times 0.9 \times 0.8 = 0.762
+\end{gather*}
+حال باید
+$P(M | H)$
+را بدست بیاریم که در قسمت قبل بدست آوردیم که برابر
+\lr{0.24}
+است. حال
+$P(S | M)$
+را بدست میاریم. این عبارت برابر است با
+$\frac{P(S, M)}{P(M)}$
+که از آنجا که
+$M$ و $S$
+مستقل هستند عبارت برابر می‌شود با
+$\frac{P(S)P(M)}{P(M)} = P(S)$
+
+
+\smalltitle{سوال 4}
+\\\noindent
+خیر همچنان مستقل هستند. چرا که صرفا این مورد علت تمدید فقط است.
+\end{document}
