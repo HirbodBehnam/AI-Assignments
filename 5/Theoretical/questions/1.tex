@@ -1,1 +1,108 @@
 \section*{سوال 1}
+\begin{enumerate}
+    \item \phantom{متن}
+    \begin{gather*}
+        P(p_1 | p_2, \neg p_3) = \sum_{p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2) =\\
+        P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2) + P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(\neg p_4 | p_2) =\\
+        0.4 \times 0.8 \times 0.8 \times 0.8 + 0.4 \times 0.8 \times 0.8 \times 0.2 = 0.256
+    \end{gather*}
+    \item \phantom{متن}
+    \begin{gather*}
+        P(p_2 | \neg p_3) = \sum_{p_1, p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2) =\\
+        0.4 \times 0.8 \times 0.8 \times 0.8 + 0.4 \times 0.8 \times 0.8 \times 0.2 + 0.6 \times 0.5 \times 0.8 \times 0.8 + 0.6 \times 0.5 \times 0.8 \times 0.2 = 0.496
+    \end{gather*}
+    \item \phantom{متن}
+    \begin{gather*}
+        P(\neg p_3) = \sum_{p_1, p_2, p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2)\\
+        0.4 \times 0.8 \times 0.8 \times 0.8 + 0.4 \times 0.8 \times 0.8 \times 0.2 + 0.4 \times 0.2 \times 0.7 \times 0.5 + 0.4 \times 0.2 \times 0.7 \times 0.5 +\\
+        0.8 \times 0.5 \times 0.8 \times 0.8 + 0.8 \times 0.5 \times 0.8 \times 0.2 + 0.8 \times 0.5 \times 0.7 \times 0.5 + 0.2 + 0.8 \times 0.5 \times 0.7 \times 0.5 =\\
+        0.738
+    \end{gather*}
+    \item به ترتیب اندیس‌های هر کدام از \lr{node}ها عملیات را انجام می‌دهیم.
+    همچنین فاکتور‌های ما به صورت زیر هستند:
+    \begin{gather*}
+        P(p_1)\\
+        P(p_2 | p_1)\\
+        P(p_3 | p_2)\\
+        p(p_4 | p_2)
+    \end{gather*}
+    البته دقت کنید که نیازی به حساب کردن متغیر
+    $p_4$
+    نیست. در ابتدا از
+    $p_1$
+    شروع می‌‌کنیم. داریم:
+    \begin{latin}
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        $p_1$ & $p_2$ & P\\
+        \hline
+        - & - & $0.6 \times 0.5 = 0.3$\\
+        \hline
+        - & + & $0.6 \times 0.5 = 0.3$\\
+        \hline
+        + & - & $0.4 \times 0.2 = 0.08$\\
+        \hline
+        + & + & $0.4 \times 0.8 = 0.32$\\
+        \hline
+    \end{tabular}
+    \end{latin}
+    حال بر اساس
+    $p_1$
+    جمع می‌زنیم. داریم:
+    \begin{latin}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            $p_2$ & P\\
+            \hline
+            - & $0.38$\\
+            \hline
+            + & $0.62$\\
+            \hline
+        \end{tabular}
+    \end{latin}
+    حال
+    $p_2$
+    را حذف می‌کنیم.  در ابتدا داریم:
+    \begin{latin}
+        \centering
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p_2$ & $p_3$ & P\\
+            \hline
+            - & - & $0.38 \times 0.8 = 0.304$\\
+            \hline
+            - & + & $0.38 \times 0.2 = 0.076$\\
+            \hline
+            + & - & $0.62 \times 0.7 = 0.434$\\
+            \hline
+            + & + & $0.62 \times 0.3 = 0.186$\\
+            \hline
+        \end{tabular}
+    \end{latin}
+    حال بر اساس
+    $p_2$
+    جمع می‌زنیم. داریم:
+    \begin{latin}
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            $p_3$ & P\\
+            \hline
+            - & $0.738$\\
+            \hline
+            + & $0.262$\\
+            \hline
+        \end{tabular}
+    \end{latin}
+    \item طبق قسمت قبل می‌دانیم:
+    $P(p_2, \neg p_3) = 0.434$
+    و
+    $P(\neg p_3) = 0.738$
+    است.
+    پس داریم:
+    \begin{gather*}
+        P(p_2 | \neg p_3) = \frac{P(p_2, \neg p_3)}{P(\neg p_3)} = \frac{0.434}{0.738} \approx 0.588
+    \end{gather*}
+\end{enumerate}
