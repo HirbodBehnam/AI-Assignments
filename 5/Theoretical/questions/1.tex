@@ -2,22 +2,22 @@
 \begin{enumerate}
     \item \phantom{متن}
     \begin{gather*}
-        P(p_1 | p_2, \neg p_3) = \sum_{p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2) =\\
-        P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2) + P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(\neg p_4 | p_2) =\\
-        0.4 \times 0.8 \times 0.8 \times 0.8 + 0.4 \times 0.8 \times 0.8 \times 0.2 = 0.256
+        P(p_1 | p_2, \neg p_3) = \frac{P(p_1, p_2, \neg p_3)}{P(p_2, \neg p_3)} = \frac{\sum_{p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2)}{\sum_{p_1, p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2)}\\
+        \frac{P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2) + P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(\neg p_4 | p_2)}{\dots} =\\
+        \frac{0.4 \times 0.8 \times 0.8 \times 0.8 + 0.4 \times 0.8 \times 0.8 \times 0.2}{\dots} = \frac{0.256}{\dots}\\
+        \frac{0.256}{0.256 + P(\neg p_1) P(p_2 | \neg p_1) P(\neg p_3 | p_2) P(p_4 | p_2) + P(\neg p_1) P(p_2 | \neg p_1) P(\neg p_3 | p_2) P(\neg p_4 | p_2)}\\
+        \frac{0.256}{0.256 + 0.6 \times 0.5 \times 0.8 \times 0.8 + 0.6 \times 0.5 \times 0.8 \times 0.2} = \frac{0.256}{0.496} \approx 0.516
     \end{gather*}
     \item \phantom{متن}
     \begin{gather*}
-        P(p_2 | \neg p_3) = \sum_{p_1, p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2) =\\
-        0.4 \times 0.8 \times 0.8 \times 0.8 + 0.4 \times 0.8 \times 0.8 \times 0.2 + 0.6 \times 0.5 \times 0.8 \times 0.8 + 0.6 \times 0.5 \times 0.8 \times 0.2 = 0.496
+        P(p_2 | \neg p_3) = \frac{P(p_2, \neg p_3)}{P(\neg p_3)} = \frac{\sum_{p_1, p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2)}{\sum_{p_1, p_2, p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2)}\\
+        \frac{0.496}{0.496 + P(p_1) P(\neg p_2 | p_1) P(\neg p_3 | \neg p_2) P(p_4 | \neg p_2) + P(p_1) P(\neg p_2 | p_1) P(\neg p_3 | \neg p_2) P(\neg p_4 | \neg p_2) + \dots} =\\
+        \frac{0.496}{0.496 + 0.4 \times 0.2 \times 0.7 \times 0.5 + 0.4 \times 0.2 \times 0.7 \times 0.5 + \dots} =\\
+        \frac{0.496}{0.552 + P(\neg p_1) P(\neg p_2 | \neg p_1) P(\neg p_3 | \neg p_2) P(p_4 | \neg p_2) + P(\neg p_1) P(\neg p_2 | \neg p_1) P(\neg p_3 | \neg p_2) P(\neg p_4 | \neg p_2)} =\\
+        \frac{0.496}{0.552 + 0.6 \times 0.5 \times 0.7 \times 0.5 + 0.6 \times 0.5 \times 0.7 \times 0.5} =\\
+        \frac{0.496}{0.762} \approx 0.65
     \end{gather*}
-    \item \phantom{متن}
-    \begin{gather*}
-        P(\neg p_3) = \sum_{p_1, p_2, p_4} P(p_1) P(p_2 | p_1) P(\neg p_3 | p_2) P(p_4 | p_2)\\
-        0.4 \times 0.8 \times 0.8 \times 0.8 + 0.4 \times 0.8 \times 0.8 \times 0.2 + 0.4 \times 0.2 \times 0.7 \times 0.5 + 0.4 \times 0.2 \times 0.7 \times 0.5 +\\
-        0.8 \times 0.5 \times 0.8 \times 0.8 + 0.8 \times 0.5 \times 0.8 \times 0.2 + 0.8 \times 0.5 \times 0.7 \times 0.5 + 0.2 + 0.8 \times 0.5 \times 0.7 \times 0.5 =\\
-        0.738
-    \end{gather*}
+    \item از مخرج قسمت قبل داریم $P(\neg p_3) = 0.762$
     \item به ترتیب اندیس‌های هر کدام از \lr{node}ها عملیات را انجام می‌دهیم.
     همچنین فاکتور‌های ما به صورت زیر هستند:
     \begin{gather*}
