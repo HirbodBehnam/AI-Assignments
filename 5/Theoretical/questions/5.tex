@@ -1,1 +1,28 @@
 \section*{سوال 5}
+\begin{enumerate}
+    \item \phantom{متن}
+    \begin{latin}
+        \centering
+        \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+        \tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=1]
+        \node[state] (A)  {$A$};
+        \node[state] (EL)[right of=A] {$EL$};
+        \node[state] (MS)[below of=A] {$MS$};
+        \node[state] (I)[below of=EL] {$I$};
+        \node[state] (CT)[below of=I] {$CT$};
+        \path
+        (A) edge[above] node{} (MS)
+        (A) edge[above] node{} (I)
+        (EL) edge[above] node{} (I)
+        (MS) edge[above] node{} (CT)
+        (I) edge[above] node{} (CT)
+        ;
+        \end{tikzpicture}
+    \end{latin}
+    \item \phantom{متن}
+    \begin{align*}
+        P(MS | -i, -ct) &= \frac{P(MS, -i, -ct)}{P(-i, -ct)}\\
+        &= \frac{\sum_{A, EL} \sum_{MS, A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}{\sum_{MS, A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}\\
+        &= \frac{ P(-ct | -i, MS) \sum_{A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL)}{\sum_{MS, A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}
+    \end{align*}
+\end{enumerate}

@@ -10,5 +10,29 @@
         +r \quad -e \quad +w \quad +m \quad -f\\
         +r \quad -e \quad -w \quad +m \quad +f
     \end{gather*}
-    \item 
+    \item وزن‌ها به ترتیب برابر عبارات زیر هستند:
+    \begin{align*} % https://artint.info/2e/html/ArtInt2e.Ch8.S6.SS4.html
+        w_1 &= \times P(-r) \times P(+f | +w) = 0.6 \times 0.15 = 0.09\\
+        w_2 &= \times P(-r) \times P(+f | -w) = 0.6 \times 0.75 = 0.45\\
+        w_3 &= \times P(-r) \times P(+f | +w) = 0.6 \times 0.15 = 0.09\\
+        w_4 &= \times P(-r) \times P(+f | -w) = 0.6 \times 0.75 = 0.45\\
+    \end{align*}
+    در نهایت احتمال‌ را بدست می‌آوریم:
+    \begin{gather*}
+        P = \frac{0.09 + 0.45}{0.09 + 0.45 + 0.09 + 0.45} = 0.5
+    \end{gather*}
+    \item احتمال را باز می‌کنیم:
+    \begin{align*}
+        P(+e | -r, +f, +m, -w) &= \frac{P(+e, -r, +f, +m, -w)}{P(-r, +f, +m, -w)}\\
+        &= \frac{P(-r) P(+e | -r) P(-w | -r) P(+m | +e, -w) P(+f | -w)}{\sum_{e} P(-r) P(e | -r) P(-w | -r) P(+m | e, -w) P(+f | -w)}\\
+        &= \frac{P(-r) P(+e | -r) P(-w | -r) P(+m | +e, -w) P(+f | -w)}{P(-r) P(-w | -r) P(+f | -w) \sum_{e} P(e | -r) P(+m | e, -w)}\\
+        &= \frac{P(+e | -r) P(+m | +e, -w)}{\sum_{e} P(e | -r) P(+m | e, -w)}\\
+        &= \frac{0.6 \times 0.45}{0.6 \times 0.45 + 0.4 \times 0.1}\\
+        &\approx 0.87
+    \end{align*}
+    \item مانند قسمت قبل عمل می‌کنیم:
+    \begin{align*}
+        P(+m | -r, +f) &= \frac{P(+m, -r, +f)}{P(-r, +f)}\\
+        TODO
+    \end{align*}
 \end{enumerate}
