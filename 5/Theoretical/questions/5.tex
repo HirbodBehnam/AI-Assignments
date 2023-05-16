@@ -22,7 +22,7 @@
     \item \phantom{متن}
     \begin{align*}
         P(MS | -i, -ct) &= \frac{P(MS, -i, -ct)}{P(-i, -ct)}\\
-        &= \frac{\sum_{A, EL} \sum_{MS, A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}{\sum_{MS, A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}\\
+        &= \frac{\sum_{A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}{\sum_{MS, A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}\\
         &= \frac{ P(-ct | -i, MS) \sum_{A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL)}{\sum_{MS, A, EL} P(A) P(EL) P(MS | A) P(-i | A, EL) P(-ct | -i, MS)}
     \end{align*}
 \end{enumerate}

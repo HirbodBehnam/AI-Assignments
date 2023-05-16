@@ -1,0 +1,34 @@
+\section*{سوال 2}
+\begin{align*}
+    h(q_0) &= 0\\
+    h(q_1) &= 1 + p h(q_0) + q h(q_2)\\
+    h(q_2) &= 1 + p h(q_1) + q h(q_3)\\
+    h(q_3) &= 1 + p h(q_2) + q h(q_4)\\
+    h(q_4) &= 0\\
+    \implies\\
+    h(q_0) &= 0\\
+    h(q_1) &= 1 + q h(q_2)\\
+    h(q_2) &= 1 + p h(q_1) + q h(q_3)\\
+    h(q_3) &= 1 + p h(q_2)\\
+    h(q_4) &= 0\\
+    \implies\\
+    h(q_2) &= 1 + p (1 + q h(q_2)) + q (1 + p h(q_2))\\
+    &= 1 + p + pq h(q_2) + q + qp h(q_2)\\
+    &= 2 + 2 pq h(q_2)\\
+    \implies\\
+    h(q_2) &= \frac{2}{1 - 2pq}\\
+    h(q_1) &= 1 + \frac{2q}{1 - 2pq}\\
+    h(q_3) &= 1 + \frac{2p}{1 - 2pq}\\
+\end{align*}
+حال دقت کنید که اگر داشته باشیم
+$p = q = \frac{1}{2}$
+آنگاه داریم:
+\begin{align*}
+    h(q_0) &= 0\\
+    h(q_1) &= 1 + \frac{2q}{1 - 2pq} = 1 + 2 = 3\\
+    h(q_2) &= \frac{2}{1 - 2pq} = 4\\
+    h(q_3) &= 1 + \frac{2p}{1 - 2pq} = 3\\
+    h(q_4) &= 0\\
+    \implies\\
+    h(x) &= n(4 - n)
+\end{align*}
