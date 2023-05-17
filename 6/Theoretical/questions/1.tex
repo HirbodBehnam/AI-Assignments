@@ -1,15 +1,41 @@
 \section*{سوال 1}
+\link{https://math.stackexchange.com/a/2894019/424863}{منبع}
+
+\noindent
 عملا سوال از ما می‌خواهد که ثابت کنیم به ازای هر
-$X_1$ و $X_2$
+$\pi_i$ و $\pi_j$
 داریم
-$P_{\infty}(X_1) = P_{\infty}(X_2)$.
-برای هر
-$P_{\infty}(X)$
+$\pi_i = \pi_j$.
+از تعریف داریم که
+$\pi_j=\sum \limits_{i=0}^K \pi_i P_{ij}$
+و همچنین
+$\sum \limits_i\pi_i=1$.
+با توجه به فرض سوال و اطلاعات کلی درباره‌ی
+\lr{markov chain}
 داریم:
-\begin{gather*}
-    P_{\infty}(X) = P_{\infty+1}(X) = \sum_{x} P(X | x) P_{\infty}(x)
-\end{gather*}
-پس داریم:
 \begin{align*}
-    P_{\infty}(X_i) = \sum_{j=1}^{k} P(X_i | X_j) P_{\infty}(X_j)
+    \pi_j&=\sum \limits_{i=0}^K \pi_i P_{ij}\\
+    1-\pi_j&=1-\sum \limits_{i=0}^K \pi_i P_{ij}\\
+    &=\sum \limits_{i=0}^K P_{ij} - \sum \limits_{i=0}^K \pi_i P_{ij}\\
+    &=\sum \limits_{i=0}^K P_{ij} - \pi_i P_{ij}\\
+    &=\sum \limits_{i=0}^K (1 - \pi_i) P_{ij}\\
+    \frac{1-\pi_j}{K}&=\sum \limits_{i=0}^K \frac{(1 - \pi_i) P_{ij}}{K}
 \end{align*}
+فرض کنید که می‌دانستیم که
+$\left[\begin{smallmatrix}
+    \pi_0,\pi_1,\dots, \pi_K
+\end{smallmatrix}\right]$
+یک جواب برای معادله‌ی
+$\pi=\sum \limits_{i=0}^K \pi P_{ij}$
+است پس می‌توان طبق عبارت بالا نتیجه گرفت که
+$\left[\begin{smallmatrix}
+    \frac{1 - \pi_0}{K},\frac{1 - \pi_1}{K},\dots, \frac{1 - \pi_K}{K}
+\end{smallmatrix}\right]$
+نیز یک جواب است. اما می‌دانیم که
+$\pi$
+یکتا است. پس داریم به ازای هر
+$i$
+که:
+\begin{gather*}
+    \dfrac{1-\pi_i}{K}=\pi_i\Rightarrow \pi_i=\dfrac{1}{K+1},\forall i
+\end{gather*}
