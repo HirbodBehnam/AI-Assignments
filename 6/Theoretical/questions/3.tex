@@ -1,14 +1,106 @@
 \section*{سوال 3}
+\link{https://www.youtube.com/watch?v=7fxVys_svFI}{منبع 1}
+\link{https://stats.stackexchange.com/q/192442/359756}{منبع 2}
 \begin{enumerate}
     \item $m$ جایگاه داریم که هر کدام می‌توانند $k$ حالت داشته باشند. پس در کل $k^m$.
-    \item از اولین حالت که به احتمال \lr{0.99}
-    برابر
-    $A$
-    است و در غیر این صورت برابر
-    $B$
-    است شروع می‌کنیم و در هر مرحله حساب می‌کنیم که چه قدر احتمال دارد که دنباله‌ی داده شده را ببینیم.
-    به عنوان مثال در ابتدا احتمال دیدن 0 برابر عبارت زیر است:
+    \item برای سادگی گراف اتفاقات را رسم می‌کنیم.
+    \begin{latin}
+        \centering
+        \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+        \tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=1]
+        \node[state] (s)  {$start$};
+        \node[state] (a1)[above right of=s] {$A$};
+        \node[state] (b1)[below right of=s] {$B$};
+        \node[state] (a2)[right of=a1] {$A$};
+        \node[state] (b2)[right of=b1] {$B$};
+        \node[state] (a3)[right of=a2] {$A$};
+        \node[state] (b3)[right of=b2] {$B$};
+        \node[] (o1)[below of=b1] {$0$};
+        \node[] (o2)[below of=b2] {$1$};
+        \node[] (o3)[below of=b3] {$0$};
+        \path
+        (s) edge[above] node{} (a1)
+        (s) edge[below] node{} (b1)
+        (a1) edge[above] node{} (a2)
+        (a1) edge[above] node{} (b2)
+        (b1) edge[above] node{} (a2)
+        (b1) edge[below] node{} (b2)
+        (a2) edge[above] node{} (a3)
+        (a2) edge[above] node{} (b3)
+        (b2) edge[above] node{} (a3)
+        (b2) edge[below] node{} (b3)
+        ;
+        \end{tikzpicture}
+    \end{latin}
+    حال از
+    \lr{start}
+    شروع می‌کنیم و به هر حالت یک عدد مقدار می‌دهیم:
+    \begin{align*}
+        \text{start} \rightarrow \text{A} &= 0.99 \times 0.8 = 0.792\\
+        \text{start} \rightarrow \text{B} &= 0.01 \times 0.1 = 0.001
+    \end{align*}
+    حال برای دومین حالات یک عدد را برای هر حالت حساب می‌کنیم. دقت کنید که برای هر حالت باید جمع احتمال‌هایی
+    که می‌توان به آن حالت رسید را در نظر گرفت.
+    \begin{align*}
+        \text{A} &= 0.792 \times 0.99 \times 0.2 + 0.001 \times 0.01 \times 0.2 = 0.156818\\
+        \text{B} &= 0.001 \times 0.99 \times 0.9 + 0.792 \times 0.01 \times 0.9 = 0.008019
+    \end{align*}
+    در نهایت برای لایه‌ی آخر حساب می‌کنیم.
+    \begin{align*}
+        \text{A} &= 0.156818 \times 0.99 \times 0.8 + 0.008019 \times 0.01 \times 0.8 \approx 0.12426\\
+        \text{B} &= 0.008019 \times 0.99 \times 0.1 + 0.156818 \times 0.01 \times 0.1 \approx 0.00095
+    \end{align*}
+    پس احتمالا از
+    $start \rightarrow A \rightarrow A \rightarrow A$
+    گذشته‌ایم.
+    \item می‌دانیم که داریم:
     \begin{gather*}
-        0.99 \times 0.8 + 0.01 \times 1 = 0.802
+        \beta_t(i) = P(z_{t+1:T}\mid x_t=i) = \sum\limits_j \beta_{t+1}(j)P(z_{t+1}\mid x_{t+1}=j)P(x_{t+1}=j\mid x_t=i)
     \end{gather*}
+    در ابتدا قرار می‌دهیم که
+    $\beta_{3(i)} = 1$
+    است. حال داریم:
+    \begin{align*}
+        \beta_2(A) &= \sum_i 1 \times P(0 | x_3 = i) \times (x_3 = i | x_2 = A)\\
+        &= P(0 | x_3 = A) \times (x_3 = A | x_2 = A) + P(0 | x_3 = B) \times (x_3 = B | x_2 = A)\\
+        &= 0.8 \times 0.99 + 0.1 \times 0.01 = 0.793\\
+        \beta_2(B) &= \sum_i 1 \times P(0 | x_3 = i) \times (x_3 = i | x_2 = B)\\
+        &= P(0 | x_3 = A) \times (x_3 = A | x_2 = B) + P(0 | x_3 = B) \times (x_3 = B | x_2 = B)\\
+        &= 0.8 \times 0.01 + 0.1 \times 0.99 = 0.107\\
+    \end{align*}
+    برای مرحله‌ی اول داریم:
+    \begin{align*}
+        \beta_1(A) &= \sum_i \beta_2(i) \times P(0 | x_3 = i) \times (x_3 = i | x_2 = A)\\
+        &= \beta_2(A) \times P(1 | x_2 = A) \times (x_2 = A | x_1 = A) + \beta_2(B) P(1 | x_2 = B) \times (x_2 = B | x_1 = A)\\
+        &= 0.793 \times 0.2 \times 0.99 + 0.107 \times 0.9 \times 0.01 = 0.157977\\
+        \beta_1(B) &= \sum_i 1 \beta_2(i) \times \times P(0 | x_3 = i) \times (x_3 = i | x_2 = B)\\
+        &= \beta_2(A) \times P(1 | x_3 = A) \times (x_3 = A | x_2 = B) + \beta_2(B) \times P(1 | x_3 = B) \times (x_3 = B | x_2 = B)\\
+        &= 0.793 \times 0.2 \times 0.01 + 0.107 \times 0.9 \times 0.99 = 0.096923\\
+    \end{align*}
+    برای مرحله‌ی صفرم نیز داریم:
+    \begin{align*}
+        \beta_0(A) &= \sum_i \beta_1(i) \times P(0 | x_3 = i) \times (x_3 = i | x_2 = A)\\
+        &= \beta_2(A) \times P(1 | x_2 = A) \times (x_2 = A | x_1 = A) + \beta_2(B) P(1 | x_2 = B) \times (x_2 = B | x_1 = A)\\
+        &= 0.157977 \times 0.8 \times 0.99 + 0.096923 \times 0.1 \times 0.01 = 0.125214707\\
+        \beta_0(B) &= \sum_i 1 \beta_1(i) \times \times P(0 | x_3 = i) \times (x_3 = i | x_2 = B)\\
+        &= \beta_2(A) \times P(0 | x_3 = A) \times (x_3 = A | x_2 = B) + \beta_2(B) \times P(0 | x_3 = B) \times (x_3 = B | x_2 = B)\\
+        &= 0.157977 \times 0.8 \times 0.01 + 0.096923 \times 0.1 \times 0.99 = 0.010859193\\
+    \end{align*}
+    \item دقیقا مثل قسمت \lr{forward} عمل می‌کنیم ولی این بار به جای جمع کردن \lr{max} می‌گیریم.
+    \begin{align*}
+        \text{start} \rightarrow \text{A} &= 0.99 \times 0.8 = 0.792\\
+        \text{start} \rightarrow \text{B} &= 0.01 \times 0.1 = 0.001
+    \end{align*}
+    لایه دوم:
+    \begin{align*}
+        \text{A} &= \max(0.792 \times 0.99 \times 0.2, 0.001 \times 0.01 \times 0.2) = 0.156816\\
+        \text{B} &= \max(0.001 \times 0.99 \times 0.9, 0.792 \times 0.01 \times 0.9) = 0.007128
+    \end{align*}
+    لایه آخر:
+    \begin{align*}
+        \text{A} &= \max(0.156816 \times 0.99 \times 0.2, 0.007128 \times 0.01 \times 0.2) \approx 0.03104\\
+        \text{B} &= \max(0.007128 \times 0.99 \times 0.9, 0.156816 \times 0.01 \times 0.9) \approx 0.00635
+    \end{align*}
+    پس باز هم بدست اوردیم
+    $start \rightarrow A \rightarrow A \rightarrow A$
 \end{enumerate}
