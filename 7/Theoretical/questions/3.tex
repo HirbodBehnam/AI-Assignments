@@ -1,1 +1,44 @@
 \section*{سوال 3}
+\link{https://math.stackexchange.com/a/1225116/424863}{منبع 1}
+\link{https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c}{منبع 2}
+
+\noindent
+در ابتدا قبل از حل سوال داریم:
+\begin{align*}
+    \dfrac{d}{dx} \sigma(x) &= \dfrac{d}{dx} \left[ \dfrac{1}{1 + e^{-x}} \right] \\
+    &= \dfrac{d}{dx} \left( 1 + \mathrm{e}^{-x} \right)^{-1} \\
+    &= -(1 + e^{-x})^{-2}(-e^{-x}) \\
+    &= \dfrac{e^{-x}}{\left(1 + e^{-x}\right)^2} \\
+    &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{e^{-x}}{1 + e^{-x}}  \\
+    &= \dfrac{1}{1 + e^{-x}\ } \cdot \dfrac{(1 + e^{-x}) - 1}{1 + e^{-x}}  \\
+    &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( \dfrac{1 + e^{-x}}{1 + e^{-x}} - \dfrac{1}{1 + e^{-x}} \right) \\
+    &= \dfrac{1}{1 + e^{-x}\ } \cdot \left( 1 - \dfrac{1}{1 + e^{-x}} \right) \\
+    &= \sigma(x) \cdot (1 - \sigma(x))
+\end{align*}
+\begin{enumerate}
+    \item داریم:
+    \begin{gather*}
+        \nabla_{h_\theta} \text{Cost} = - 2 h_\theta(x)' (y - h_\theta(x)) = - 2 (y - h_\theta(x)) \frac{\partial}{\partial w_i} \sigma(x)\\
+        \implies\\
+        - 2 (y - h_\theta(x)) \frac{\partial}{\partial w_0} \sigma(x) = 2 (y - \sigma(x)) (1 - \sigma(x)) \sigma(x)\\
+        - 2 (y - h_\theta(x)) \frac{\partial}{\partial w_1} \sigma(x) = 2 (y - \sigma(x)) x_1 (1 - \sigma(x)) \sigma(x)\\
+        - 2 (y - h_\theta(x)) \frac{\partial}{\partial w_2} \sigma(x) = 2 (y - \sigma(x)) x_2 (1 - \sigma(x)) \sigma(x)\\
+    \end{gather*}
+    برای گرادیان می‌توانیم از فرمول زیر استفاده کنیم:
+    \begin{align*}
+        w^{t+1} &= w^t - \eta (\nabla_{h_\theta} \text{Cost})\\
+        &w^t - \eta \begin{bmatrix}
+            2 (y - \sigma(x)) (1 - \sigma(x)) \sigma(x)\\
+            2 (y - \sigma(x)) x_1 (1 - \sigma(x)) \sigma(x)\\
+            2 (y - \sigma(x)) x_2 (1 - \sigma(x)) \sigma(x)
+        \end{bmatrix}
+    \end{align*}
+    \item مشکل اساسی که با روش دوم وجود دارد این است که یک تابع محدب نیست. این بدین منظور است
+    که ممکن است که در
+    \lr{local minimum}ها
+    گیر کنیم وقتی که داریم از
+    \lr{gradient descent}
+    استفاده می‌کنیم. اما تابع اولی این مشکل را ندارد و
+    \lr{convex}
+    است.
+\end{enumerate}
