@@ -1,0 +1,30 @@
+\section*{سوال 2}
+\link{https://www.geeksforgeeks.org/naive-bayes-classifiers/}{منبع}
+\begin{enumerate}
+    \item باید عبارت زیر را حساب کنیم:
+    \begin{align*}
+        P(Spam | w_1, w_2, w_3, w_4, w_5) &= \prod_{i=1}^5 P(w_i | Spam)\\
+        &= \frac{5}{6} \frac{4}{6} \frac{1}{6} \frac{2}{6} \frac{6}{6} = 0.0308641975309\\
+        P(Not-Spam | w_1, w_2, w_3, w_4, w_5) &= \prod_{i=1}^5 P(w_i | Not-Spam)\\
+        &= \frac{1}{4} \frac{1}{4} \frac{3}{4} \frac{3}{4} \frac{2}{4} = 0.017578125
+    \end{align*}
+    پس به احتمال خوبی اسپم است.
+    \item باید عبارت زیر را حساب کنیم:
+    \begin{align*}
+        P(Spam | w_1, w_2, \neg w_3, \neg w_4, \neg w_5) &= \prod_{i=1}^2 P(w_i | Spam) \prod_{i=3}^5 P(\neg w_i | Spam)\\
+        &= \frac{5}{6} \frac{4}{6} \frac{5}{6} \frac{4}{6} \frac{0}{6} = 0\\
+        P(Not-Spam | w_1, w_2, \neg w_3, \neg w_4, \neg w_5) &= \prod_{i=1}^2 P(w_i | Not-Spam) \prod_{i=3}^5 P(\neg w_i | Not-Spam)\\
+        &= \frac{1}{4} \frac{1}{4} \frac{1}{4} \frac{1}{4} \frac{2}{4} = 0.001953125
+    \end{align*}
+    الگوریتم به ما می‌گوید که این ایمیل اسپم است ولی قسمت اسپم جوابش صفر شد. چرا که ستون
+    $w_5$
+    در تمامی حالاتی که اسپم بود 1 بود!
+    \item به صورت زیر به هر کدام از داده‌ها یکی را اضافه می‌کنیم.
+    \begin{align*}
+        P(Spam | w_1, w_2, \neg w_3, \neg w_4, \neg w_5) &= \prod_{i=1}^2 P(w_i | Spam) \prod_{i=3}^5 P(\neg w_i | Spam)\\
+        &= \frac{5+1}{6+1} \frac{4+1}{6+1} \frac{5+1}{6+1} \frac{4+1}{6+1} \frac{0+1}{6+1} = 0.0535491164396\\
+        P(Not-Spam | w_1, w_2, \neg w_3, \neg w_4, \neg w_5) &= \prod_{i=1}^2 P(w_i | Not-Spam) \prod_{i=3}^5 P(\neg w_i | Not-Spam)\\
+        &= \frac{1+1}{4+1} \frac{1+1}{4+1} \frac{1+1}{4+1} \frac{1+1}{4+1} \frac{2+1}{4+1} = 0.01536
+    \end{align*}
+    حال می‌توجه می‌شویم که ایمیل به عنوان اسپم شناخته می‌شود.
+\end{enumerate}
