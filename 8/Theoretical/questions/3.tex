@@ -1,6 +1,12 @@
 \section*{سوال 3}
 \begin{enumerate}
     \item $64 \times 64 \times 2048 + 2048 \times 2 = 8392704$
-    \item $\frac{\partial J}{\partial W_{ij}} = \frac{\partial J}{\partial z}\frac{\partial z}{\partial W_{ij}} = (y - z) \times h$
-    \item $\frac{\partial J}{\partial V_{ij}} = \frac{\partial J}{\partial z}\frac{\partial z}{\partial g}\frac{\partial g}{\partial V_{ij}} = (y - z) \times x$
+    \item $\frac{\partial J}{\partial W_{ij}} = \frac{\partial J}{\partial z}\frac{\partial z}{\partial W_{ij}} = (z - y) \times h$
+    \item دقت کنید که
+    $z = Wh = W r(g) = W r(Vx)$
+    است. پس داریم:
+    \begin{align*}
+        \frac{\partial J}{\partial V_{ij}} &= (z - y) \times \frac{\partial z}{\partial V_{ij}} \\
+        &= (z - y) \times W \times x \times r'(Vx)    
+    \end{align*}
 \end{enumerate}

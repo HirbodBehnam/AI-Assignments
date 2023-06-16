@@ -2,7 +2,7 @@
 فرض می‌کنیم که
 \lr{activation threshold}
 برابر 0 است. یعنی برای ورودی‌هایی که جمع وزن‌دار آنها بیشتر مساوی 0 شود خروجی 1 می‌شود. همچنین دقت کنید که
-$\text{XOR}(a, b) = \text{OR}(\text{NOR}(a, b), \text{AND}(a, b))$
+$\text{XNOR}(a, b) = \text{OR}(\text{NOR}(a, b), \text{AND}(a, b))$
 است. پس در لایه‌ی اول باید
 \lr{NOR} و \lr{AND}
 را طراحی کنیم. برای طراحی
@@ -36,11 +36,9 @@ $\text{XOR}(a, b) = \text{OR}(\text{NOR}(a, b), \text{AND}(a, b))$
     \node[state] (main)[] {};
     \node[] (in1)[above left of=main] {$a$};
     \node[] (in2)[below left of=main] {$b$};
-    \node[] (const)[left of=main] {$1$};
     \path
     (in1) edge[above] node{$-1$} (main)
     (in2) edge[below] node{$-1$} (main)
-    (const) edge[above] node{$2$} (main)
     ;
     \end{tikzpicture}
 \end{latin}
@@ -74,7 +72,6 @@ $\text{XOR}(a, b) = \text{OR}(\text{NOR}(a, b), \text{AND}(a, b))$
     \node[state] (main_2)[below left = of main_3] {};
     \node[] (in1_2)[above left of=main_2] {$a$};
     \node[] (in2_2)[below left of=main_2] {$b$};
-    \node[] (const_2)[left of=main_2] {$1$};
     \node[] (const_3)[left of=main_3] {$1$};
     \node[] (xor)[right of=main_3] {XOR};
     \path
@@ -83,7 +80,6 @@ $\text{XOR}(a, b) = \text{OR}(\text{NOR}(a, b), \text{AND}(a, b))$
     (const_1) edge[above] node{$-2$} (main_1)
     (in1_2) edge[above] node{$-1$} (main_2)
     (in2_2) edge[below] node{$-1$} (main_2)
-    (const_2) edge[above] node{$2$} (main_2)
     (main_2) edge[below] node{$1$} (main_3)
     (main_1) edge[above] node{$1$} (main_3)
     (const_3) edge[above] node{$1$} (main_3)
