@@ -1,0 +1,33 @@
+\section*{سوال 1}
+\begin{enumerate}
+    \item خیر کار مناسبی نیست. مشکلی که وجود دارد این است که زمانی که می‌خواهیم \lr{back propogation}
+    را انجام دهیم، عملا تمامی وزن‌های بر روی یک لایه یکی می‌شوند و برای همین عملیات یادگیری خراب می‌شود.
+    به این کار
+    \lr{symmetric breaking}
+    می‌گویند.
+    \source{https://stackoverflow.com/a/46426591/4213397} \source{https://datascience.stackexchange.com/q/30989}
+    \item خیر نیازی نیست چرا که از کل دیتاست استفاده می‌کنیم و جایگشت داده‌ها اهمیتی ندارد. در واقعیت کسی
+    از این مدل استفاده نمی‌کند چرا که بسیار محاسبات سنگینی دارد.
+    \source{https://www.reddit.com/r/MLQuestions/comments/9xmmni/why_shuffling_the_batch_in_batch_gradient_descent/}
+    \item بله باز هم نیاز است. ممکن است که در صورتی که شافل نکرده باشیم مثلا یک بار فقط بر روی ست تمام گربه یا سگ
+    \lr{batch}
+    می‌زنیم و این باعث می‌شود که مثلا در
+    \lr{local maxima}ها
+    به احتمال بیشتری گیر کنیم.
+    \source{https://stats.stackexchange.com/a/337738/359756}
+    \item در حالت \lr{full batch} چون که بر روی تمامی داده‌ها
+    \lr{batch}
+    می‌زنیم روند
+    \lr{loss}
+    بسیار صاف نزولی است پس شکل
+    $A$
+    برای
+    \lr{full batch}
+    است. ولی دو نمودار دیگر نویز دارند. آن که نویزش کمتر است
+    (نمودار $B$)
+    برای
+    \lr{mini batch}
+    است و دیگری برای
+    \lr{stoⅽhastiⅽ}
+    است.
+\end{enumerate}

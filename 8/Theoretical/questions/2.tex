@@ -1,0 +1,93 @@
+\section*{سوال 2}
+فرض می‌کنیم که
+\lr{activation threshold}
+برابر 0 است. یعنی برای ورودی‌هایی که جمع وزن‌دار آنها بیشتر مساوی 0 شود خروجی 1 می‌شود. همچنین دقت کنید که
+$\text{XOR}(a, b) = \text{OR}(\text{NOR}(a, b), \text{AND}(a, b))$
+است. پس در لایه‌ی اول باید
+\lr{NOR} و \lr{AND}
+را طراحی کنیم. برای طراحی
+\lr{AND}
+کافی است که دو ورودی را با هم جمع کنیم و وقتی خروجی را 1 بدیم که جمع دو ورودی بیشتر از 1 باشد. یعنی عملا
+برای
+\lr{AND}
+به صورت زیر است شبکه عصبی ما:
+\begin{latin}
+    \centering
+    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+    \tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=1]
+    \node[state] (main)[] {};
+    \node[] (in1)[above left of=main] {$a$};
+    \node[] (in2)[below left of=main] {$b$};
+    \node[] (const)[left of=main] {$1$};
+    \path
+    (in1) edge[above] node{$1$} (main)
+    (in2) edge[below] node{$1$} (main)
+    (const) edge[above] node{$-2$} (main)
+    ;
+    \end{tikzpicture}
+\end{latin}
+برای
+\lr{NOR}
+به صورت مشابه عمل می‌کنیم.
+\begin{latin}
+    \centering
+    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+    \tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=1]
+    \node[state] (main)[] {};
+    \node[] (in1)[above left of=main] {$a$};
+    \node[] (in2)[below left of=main] {$b$};
+    \node[] (const)[left of=main] {$1$};
+    \path
+    (in1) edge[above] node{$-1$} (main)
+    (in2) edge[below] node{$-1$} (main)
+    (const) edge[above] node{$2$} (main)
+    ;
+    \end{tikzpicture}
+\end{latin}
+برای خود
+\lr{OR}
+نیز داریم:
+\begin{latin}
+    \centering
+    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+    \tikzstyle{every state}=[fill=white,draw=black,thick,text=black,scale=1]
+    \node[state] (main)[] {};
+    \node[] (in1)[above left of=main] {$a$};
+    \node[] (in2)[below left of=main] {$b$};
+    \node[] (const)[left of=main] {$1$};
+    \path
+    (in1) edge[above] node{$1$} (main)
+    (in2) edge[below] node{$1$} (main)
+    (const) edge[above] node{$1$} (main)
+    ;
+    \end{tikzpicture}
+\end{latin}
+پس در کل شبکه عصبی ما برابر است با:
+\begin{latin}
+    \centering
+    \begin{tikzpicture}[->, >=stealth', auto, semithick, node distance=2cm]
+    \node[state] (main_3) {};
+    \node[state] (main_1)[above left = of main_3] {};
+    \node[] (in1_1)[above left of=main_1] {$a$};
+    \node[] (in2_1)[below left of=main_1] {$b$};
+    \node[] (const_1)[left of=main_1] {$1$};
+    \node[state] (main_2)[below left = of main_3] {};
+    \node[] (in1_2)[above left of=main_2] {$a$};
+    \node[] (in2_2)[below left of=main_2] {$b$};
+    \node[] (const_2)[left of=main_2] {$1$};
+    \node[] (const_3)[left of=main_3] {$1$};
+    \node[] (xor)[right of=main_3] {XOR};
+    \path
+    (in1_1) edge[above] node{$1$} (main_1)
+    (in2_1) edge[below] node{$1$} (main_1)
+    (const_1) edge[above] node{$-2$} (main_1)
+    (in1_2) edge[above] node{$-1$} (main_2)
+    (in2_2) edge[below] node{$-1$} (main_2)
+    (const_2) edge[above] node{$2$} (main_2)
+    (main_2) edge[below] node{$1$} (main_3)
+    (main_1) edge[above] node{$1$} (main_3)
+    (const_3) edge[above] node{$1$} (main_3)
+    (main_3) edge[above] node{} (xor)
+    ;
+    \end{tikzpicture}
+\end{latin}
